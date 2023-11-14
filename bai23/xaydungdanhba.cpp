@@ -10,10 +10,10 @@ class node{
         node(){elem = 1;}
 };
 
-void update(node *&H, char *p){
+void add(node *&H, char *p){
     if(!H) H = new node();
     else H->elem++;
-    if(*p) update(H->child[*p - 'a'],p+1);
+    if(*p) add(H->child[*p - 'a'],p+1);
 }
 
 int get(node *H, char *p){
@@ -30,7 +30,7 @@ int main(){
     cin >> n;
     while(n--){
         cin >> q >> x;
-        if(q[0] == 'a') update(root,x);
+        if(q[0] == 'a') add(root,x);
         else{
             a.push_back(get(root,x));
         }

@@ -1,0 +1,19 @@
+So dinh: 5
+So canh: 6
+Dinh 1 ket noi voi: 
+	Dinh 2 co trong so: 1
+	Dinh 3 co trong so: 3
+Dinh 2 ket noi voi: 
+	Dinh 1 co trong so: 1
+	Dinh 3 co trong so: 1
+	Dinh 4 co trong so: 3
+Dinh 3 ket noi voi: 
+	Dinh 1 co trong so: 3
+	Dinh 2 co trong so: 1
+	Dinh 4 co trong so: 2
+	Dinh 5 co trong so: 1
+Dinh 4 ket noi voi: 
+	Dinh 2 co trong so: 3
+	Dinh 3 co trong so: 2
+Dinh 5 ket noi voi: 
+	Dinh 3 co trong so: 1
