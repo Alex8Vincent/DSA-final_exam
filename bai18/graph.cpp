@@ -118,12 +118,14 @@ public:
             cerr << "Khong the tao hoac mo tep: " << filename << endl;
         }
     }
-    void DFS(int u)
+    void DFS()
     {
+        int u;
+        cout << endl << "Nhap dinh can duyet: "; cin >> u;
         mystack<int> s;
         vector<bool> visited(size, false);
-        s.push(u);
-        visited[u] = true;
+        s.push(u-1);
+        visited[u-1] = true;
         cout << "DFS: ";
         while (!s.empty())
         {
@@ -133,7 +135,7 @@ public:
             visited[check] = true;
             for (int i = 0; i < matrixQ[check].size(); ++i)
             {
-                if (!visited[i])
+                if (!visited[i] && matrixQ[check][i])
                 {              
                     s.push(i);  
                     visited[i] = true;
@@ -143,20 +145,23 @@ public:
         cout << endl;
     }
 
-    void dijkstra(int start, int end)
+    void dijkstra()
     {
+        int start_node, end_node;
+        cout << "Enter the starting node for Dijkstra: ";
+        cin >> start_node ;
+        cout << endl <<  "Enter the ending node for Dijkstra: ";
+        cin >> end_node;
         vector<int> dist(size + 1, INT_MAX), res(size + 1);
-        dist[start] = 0;
+        dist[start_node - 1] = 0;
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-        pq.push({0, start});
+        pq.push({0, start_node - 1});
 
         while (!pq.empty())
         {
             int w = pq.top().first;
             int u = pq.top().second;
             pq.pop();
-            //  if (w > dist[u - 1])
-            //     continue;
             for (int v = 0; v < matrixQ[u].size(); v++)
             {
                 if (dist[u] + matrixQ[u][v] < dist[v] && matrixQ[u][v] != 0)
@@ -168,19 +173,19 @@ public:
             }
         }
 
-        cout << "Shortest distances from node " << start << ":\n";
-        int i = res[end];
+        cout << "Shortest distances from node " << start_node - 1 << ":\n";
+        int i = res[end_node - 1];
         vector<int> _r;
-        _r.push_back(end);
-        while (i != start)
+        _r.push_back(end_node - 1 );
+        while (i != start_node - 1)
         {
             _r.push_back(i);
             i = res[i];
         }
-        _r.push_back(start);
+        _r.push_back(start_node - 1);
         for (int i = _r.size() - 1; i >= 0; i--)
             cout << _r[i] + 1 << " ";
-        cout << "\nKhoang cach: " << dist[end] << endl;
+        cout << "\nKhoang cach: " << dist[end_node - 1] << endl;
     }
 };
 
