@@ -4,7 +4,7 @@
 #define _graph_cpp
 #define ll long long
 #define INF LLONG_MAX
-#define MOD 10e9+7
+#define MOD 10e9 + 7
 using namespace std;
 
 class Graph
@@ -18,8 +18,8 @@ public:
     Graph(int vertices) : size(vertices), matrixQ(vertices, vector<int>(vertices, 0)) {}
     void add_edge(int u, int v, int weight)
     {
-        matrixQ[u-1][v-1] = weight;
-        matrixQ[v-1][u-1] = weight;
+        matrixQ[u - 1][v - 1] = weight;
+        matrixQ[v - 1][u - 1] = weight;
     }
     void print_graph()
     {
@@ -129,13 +129,13 @@ public:
         {
             int check = s.top();
             s.pop();
-            cout << check  + 1<< ' ';
+            cout << check + 1 << ' ';
             visited[check] = true;
             for (int i = 0; i < matrixQ[check].size(); ++i)
             {
                 if (!visited[i])
-                {              // kiem tra xem co canh noi tu check den i va i chua duoc duyet khong
-                    s.push(i); // dua ke i chua duyet vao stack
+                {              
+                    s.push(i);  
                     visited[i] = true;
                 }
             }
@@ -143,12 +143,11 @@ public:
         cout << endl;
     }
 
-    
     void dijkstra(int start, int end)
     {
-        vector<int> dist(size+1, INT_MAX), res(size+1);
+        vector<int> dist(size + 1, INT_MAX), res(size + 1);
         dist[start] = 0;
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int> > > pq;
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
         pq.push({0, start});
 
         while (!pq.empty())
@@ -156,8 +155,8 @@ public:
             int w = pq.top().first;
             int u = pq.top().second;
             pq.pop();
-          //  if (w > dist[u - 1])
-           //     continue;
+            //  if (w > dist[u - 1])
+            //     continue;
             for (int v = 0; v < matrixQ[u].size(); v++)
             {
                 if (dist[u] + matrixQ[u][v] < dist[v] && matrixQ[u][v] != 0)
@@ -175,12 +174,12 @@ public:
         _r.push_back(end);
         while (i != start)
         {
-           _r.push_back(i);
-           i = res[i];
+            _r.push_back(i);
+            i = res[i];
         }
         _r.push_back(start);
-        for(int i =_r.size() - 1; i >= 0; i--)
-            cout << _r[i]+1 << " ";
+        for (int i = _r.size() - 1; i >= 0; i--)
+            cout << _r[i] + 1 << " ";
         cout << "\nKhoang cach: " << dist[end] << endl;
     }
 };
