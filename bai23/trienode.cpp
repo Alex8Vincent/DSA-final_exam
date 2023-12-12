@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 #define ll long long
 #define MOD 10e9 + 7
+#ifndef _trienode_cpp_
+#define _trienode_cpp
 using namespace std;
 
 class TrieNode
@@ -16,6 +18,11 @@ protected:
         for (int i = 0; i < 26; i++)
             child[i] = NULL;
         exist = count = 0;
+    }
+    ~TrieNode(){
+        for(int i = 0; i  < 26; i++){
+            delete[] child[i];
+        }
     }
 };
 
@@ -47,7 +54,7 @@ public:
 
     int getCount(string s)
     {
-        TrieNode *p = root;
+        TrieNode *p = root; 
         for (auto c : s)
         {
             int temp = c - 'a';
@@ -81,14 +88,10 @@ public:
             cout << x << endl;
         }
     }
+    ~Trie(){
+        if(root){
+            delete[]root;
+        }
+    }
 };
-
-int main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    Trie *trie = new Trie();
-    trie->run();
-    return 0;
-}
+ #endif

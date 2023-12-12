@@ -2,9 +2,6 @@
 #include "mystack.cpp"
 #ifndef _graph_cpp
 #define _graph_cpp
-#define ll long long
-#define INF LLONG_MAX
-#define MOD 10e9 + 7
 using namespace std;
 
 class Graph
@@ -186,6 +183,58 @@ public:
         for (int i = _r.size() - 1; i >= 0; i--)
             cout << _r[i] + 1 << " ";
         cout << "\nKhoang cach: " << dist[end_node - 1] << endl;
+    }
+    void run(){
+        int luachon;
+        do{
+            cout << "\n=========================MENU=========================\n";
+            cout << "|| 1.Nhap do thi tu file." << endl;
+            cout << "|| 2.Ghi do thi ra file." << endl;
+            cout << "|| 3.Duyet do thi theo chieu sau." << endl;
+            cout << "|| 4.Tim duong di ngan nhat giua hai dinh bat ky." << endl;
+            cout << "|| 0.Thoat chuong trinh.";
+            cout << "\n=========================MENU========================\n";
+            cout << "Nhap su lua chon cua ban: ";
+            cin >> luachon;
+
+            switch (luachon)
+            {
+            case 1:
+            {
+                string tenfile;
+                cout << "Nhap ten file: ";
+                cin >> tenfile;
+                this->readfile(tenfile);
+                break;
+            }
+            case 2:
+            {
+                string name;
+                cout << "Nhap ten file: ";
+                cin >> name;
+                this->writefile(name);
+                break;
+            }
+            case 3:
+            {
+                this->DFS();
+                break;
+            }
+            case 4:
+            {
+                this->dijkstra();
+                break;
+            }
+            case 0:
+            {
+                cout << "Chuong trinh ket thuc." << endl;
+                break;
+            }
+            default:
+                cout << "Lua chon khong hop le. Vui long nhap lai." << endl;
+            }
+        }while(luachon != 0);
+        
     }
 };
 
